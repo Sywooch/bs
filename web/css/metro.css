@@ -1,0 +1,164 @@
+.metro{
+    position: relative;
+    cursor: pointer;
+    font-weight:600;
+    background:#fff;
+    color:#898989;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.metro.open{
+    z-index: 2;
+}
+.metro:hover,
+.metro.focus{
+    color:#666;
+}
+/* OLD SELECT (HIDDEN) */
+.metro .old{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+.metro select{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.metro.touch select{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+/* SELECTED FEEDBACK ITEM */
+.metro .selected {
+    color: #96a6a7;
+}
+.metro .selected:hover{
+    color:#e94e38;
+}
+.metro .selected,
+.metro li{
+    display: block;
+    padding: 8px 0px 8px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 13px;
+    padding-left: 6px;
+    font-weight: 400;
+    color: #555555;
+}
+.product_right {
+    margin-bottom: 2em;
+}
+/* .focus class is also added on hover */
+.metro:hover .selected::after, .metro.focus .selected::after {
+    background: url(../images/p_minus.png) no-repeat 0px 10px;
+}
+.metro li:hover{
+    background-color:#ECEB4D;
+}
+.metro li:hover{
+    background-color:#ECEB4D;
+}
+.metro li.focus{
+    background:#ECEB4D;
+    position: relative;
+    z-index: 3;
+    color:#000;
+}
+.metro li.active{
+    background-color:#ECEB4D;
+    color: #000;
+}
+.metro .selected::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding:6px;
+    background:url(../images/p_plus.png) no-repeat 0px 10px;
+}
+.metro:hover .selected::after,
+.metro.focus .selected::after{
+    background:url(../images/p_minus.png) no-repeat 0px 10px;
+}
+/* DROP DOWN WRAPPER */
+.metro div{
+    position: absolute;
+    height: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top:1px;
+    overflow: hidden;
+    opacity: 0;
+    color: #FFF;
+}
+/* Height is adjusted by JS on open */
+.metro.open div{
+    opacity: 1;
+    z-index: 2;
+}
+/* FADE OVERLAY FOR SCROLLING LISTS */
+.metro.scrollable div::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+}
+.metro.scrollable.bottom div::after{
+    opacity: 0;
+}
+/* DROP DOWN LIST */
+.metro ul{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding:0;
+    list-style: none;
+    overflow: hidden;
+    background:#000;
+}
+.metro.scrollable.open ul{
+    overflow-y: auto;
+}
+/* DROP DOWN LIST ITEMS */
+.metro li{
+    list-style: none;
+    padding: 6px 10px;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: lowercase;
+    color: #fff;
+}
+.metro li:last-child {
+    border-bottom: 0;
+}
+.checkbox i {
+    position: absolute;
+    bottom: 255px;
+    left: 14.9%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: 2px solid #D2CF99;
+}
+.checkbox{
+    margin-top:0;
+}

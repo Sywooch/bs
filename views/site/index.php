@@ -2,52 +2,54 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::$app->params['site_name'];
 ?>
-<div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+<!--
+<div id="categories" class="categories">
+    <div class="container">
+        <h3>КАТЕГОРИИ</h3>
+        <div class="category-grids">
+            <a href="bicycles.html">
+                <div class="col-md-3 cate-grid grid1">
+                    <h4>ГОРОДСКИЕ</h4>
+                    <a class="store" href="bicycles.html">СМОТРЕТЬ</a>
+                </div></a>
+            <a href="bicycles.html">
+                <div class="col-md-3 cate-grid grid2">
+                    <h4>ШОССЕЙНЫЕ</h4>
+                    <a class="store" href="bicycles.html">СМОТРЕТЬ</a>
+                </div></a>
+            <a href="bicycles.html">
+                <div class="col-md-3 cate-grid grid3">
+                    <h4>ГОРНЫЕ</h4>
+                    <a class="store" href="bicycles.html">СМОТРЕТЬ</a>
+                </div></a>
+            <a href="bicycles.html">
+                <div class="col-md-3 cate-grid grid4">
+                    <h4>ПРЕМИУМ СЕРИЯ</h4>
+                    <a class="store" href="bicycles.html">СМОТРЕТЬ</a>
+                </div></a>
+            <div class="clearfix"></div>
         </div>
-
     </div>
 </div>
+-->
+<div class="caption">
+    <div class="slider">
+        <div class="callbacks_container">
+            <ul class="rslides" id="slider">
+                <li><h1>ГОРОДСКИЕ</h1></li>
+                <li><h1>ШОССЕЙНЫЕ</h1></li>
+                <li><h1>ГОРНЫЕ</h1></li>
+                <li><h1>ПРЕМИУМ</h1></li>
+            </ul>
+            <p>Мы <span>предлагаем</span> то, что поможет <span>осуществить</span> Ваше <span>путешествие</span></p>
+            <a class="morebtn" href="bicycles.html">КУПИТЬ</a>
+        </div>
+    </div>
+</div>
+<!--
+<div class="dwn">
+    <a class="scroll" href="#categories"><img src="images/scroll.png" alt=""/></a>
+</div>
+-->

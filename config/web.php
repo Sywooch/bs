@@ -4,16 +4,16 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'shop',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'PnxJr_xTNdR4jyu6zbvThBZLJQ69UZL6',
         ],
         'cache' => [
@@ -25,6 +25,27 @@ $config = [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+            'appendTimestamp' => true,
+//            'bundles' => [
+//                'yii\web\JqueryAsset' => [
+//                    'js' => [
+//                        YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js'
+//                    ]
+//                ],
+//                'yii\bootstrap\BootstrapAsset' => [
+//                    'css' => [
+//                        YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css',
+//                    ]
+//                ],
+//                'yii\bootstrap\BootstrapPluginAsset' => [
+//                    'js' => [
+//                        YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js',
+//                    ]
+//                ]
+//            ],
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

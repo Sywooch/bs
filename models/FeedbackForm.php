@@ -8,9 +8,10 @@ use yii\base\Model;
 /**
  * ContactForm is the model behind the contact form.
  */
-class ContactForm extends Model
+class FeedbackForm extends Model
 {
     public $name;
+    public $surname;
     public $email;
     public $subject;
     public $body;
@@ -24,7 +25,8 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+//            [['name', 'surname', 'email', 'subject', 'body'], 'required', 'message' => 'Поле не может быть пустым'],
+            [['name', 'surname', 'email', 'subject', 'body'], 'required', 'message' => ''],
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
@@ -47,7 +49,7 @@ class ContactForm extends Model
      * @param string $email the target email address
      * @return bool whether the model passes validation
      */
-    public function contact($email)
+    public function feedback($email)
     {
         if ($this->validate()) {
             Yii::$app->mailer->compose()
