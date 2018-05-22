@@ -50,7 +50,7 @@ use yii\helpers\Url;
                 </li>
                 <li class="dropdown1"><a href="<?= Url::to(['site/login']) ?>">ВХОД</a>
                     <ul class="dropdown2">
-                        <li><a href="404.html">РЕГИСТРАЦИЯ</a></li>
+                        <li><a href="<?= Url::to(['user/register']) ?>">РЕГИСТРАЦИЯ</a></li>
                     </ul>
                 </li>
                 <!--                    <a class="shop" href="cart.html" title="Корзина"><h4><span class="glyphicon glyphicon-shopping-cart"></span></h4></a>-->
