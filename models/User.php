@@ -32,6 +32,7 @@ class User extends CustomActiveRecord implements IdentityInterface
     const USER_ADMIN = 250;
 
     public $authKey;
+    public $password_repeat;
 
     /**
      * {@inheritdoc}
@@ -47,17 +48,28 @@ class User extends CustomActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'password', 'role', 'name', 'surname'], 'required'],
+            [['role'], 'default', 'value' => self::USER_BUYER],
+            [['email', 'name', 'surname', 'password', 'password_repeat', 'role'], 'required'],
             [['email', 'password','name', 'surname', 'phone', 'address'], 'filter', 'filter' => 'trim'],
-            [['email'], 'unique'],
-            [['role', 'last_login', 'created_at', 'updated_at', 'blocked_at', 'status', 'version'], 'integer'],
             [['email'], 'string', 'length' => [5, 50]],
+            [['email'], 'email'],
+            [['email'], 'unique'],
             [['password'], 'string', 'length' => [6, 18]],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password'],
             [['name', 'surname'], 'string', 'max' => 25],
+            [['name', 'surname'], 'match', 'pattern' => Yii::$app->params['patterns']['name']],
             [['phone'], 'string', 'max' => 20],
+            [['phone'], 'match', 'pattern' => Yii::$app->params['patterns']['phone']],
             [['address'], 'string', 'max' => 255],
+            [['address'], 'match', 'pattern' => Yii::$app->params['patterns']['address']],
+            [['role', 'last_login', 'created_at', 'updated_at', 'blocked_at', 'status', 'version'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
         ];
+    }
+
+    public function validateName()
+    {
+
     }
 
     /**
@@ -69,6 +81,7 @@ class User extends CustomActiveRecord implements IdentityInterface
             'id' => Yii::t('app', 'ID'),
             'email' => Yii::t('app', 'Email'),
             'password' => Yii::t('app', 'Password'),
+            'password_repeat' => Yii::t('app', 'Password Repeat'),
             'role' => Yii::t('app', 'Role'),
             'last_login' => Yii::t('app', 'Last Login'),
             'name' => Yii::t('app', 'Name'),
@@ -109,13 +122,7 @@ class User extends CustomActiveRecord implements IdentityInterface
 //                    }
 //                }
 //            ],
-            'TimestampBehavior' => [
-                'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    self::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-            ],
+            TimestampBehavior::className(),
         ];
     }
 
@@ -128,6 +135,17 @@ class User extends CustomActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
+    }
+
+    /**
+     * Finds user by email
+     *
+     * @param $email
+     * @return User|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['email' => $email]);
     }
 
     /**

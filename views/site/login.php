@@ -7,8 +7,9 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Вход';
+$this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
+$model->rememberMe = false;
 ?>
 
 <div class="login bg-grey">
@@ -18,8 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',
             'options' => [
-                'class' => 'col-sm-6',
-            ]
+                'class' => 'col-sm-6 mb-5',
+            ],
+            'fieldConfig' => [
+                'template' => "{label}{error}\n{input}",
+            ],
         ]); ?>
 
             <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
@@ -29,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Войти', ['class' => 'btn btn-site', 'name' => 'login-button']) ?>
+                <?= Html::submitButton(Yii::t('app', 'LoginBtn'),
+                    ['class' => 'btn btn-site', 'name' => 'login-button']) ?>
             </div>
 
         <?php ActiveForm::end(); ?>

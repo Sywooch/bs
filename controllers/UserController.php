@@ -5,9 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
+use yii\bootstrap\ActiveForm;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -27,6 +29,43 @@ class UserController extends Controller
                 ],
             ],
         ];
+    }
+
+    /**
+     * New user registration
+     *
+     * @return array|string|Response
+     * @throws \yii\base\Exception
+     */
+    public function actionRegister()
+    {
+        $model = new User();
+
+        do {
+            if (!$model->load(Yii::$app->request->post())) {
+                break;
+            }
+
+            if (Yii::$app->request->post('sent') === 'was') {
+                if ($model->validate()) {
+                    $model->setPassword($model->password);
+                    $model->save(false);
+
+                    return $this->goBack();
+                }
+                break;
+            }
+
+//            if (Yii::$app->request->isAjax) {
+//                Yii::$app->response->format = Response::FORMAT_JSON;
+//                return ActiveForm::validate($model, 'email');
+//            }
+
+        } while (0);
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
     }
 
     /**

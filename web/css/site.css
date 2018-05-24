@@ -47,15 +47,12 @@ ul {
     float:right;
     margin-top: 0;
 }
-/*--- cart ---*/
+/*--- menu-cart ---*/
 a.shop{
     display:inline-block;
     float:left;
     margin:9px 0 0 30px;
     color: white;
-}
-a.shop:hover {
-    color: #fcff19;
 }
 
 /*----- FOOTER -----*/
@@ -413,6 +410,25 @@ a.morebtn:hover{
     background-color: #555;
     border-color: #000;
 }
+
+
+
+.help-block {
+    display: inline;
+    font-size: small;
+    /*margin-left: 0.25em;*/
+}
+.alert {
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    width: 90%;
+    margin-left: 5%;
+}
+.png_link {
+    filter: invert(100%);
+}
+
 /*
 <p class="help-block help-block-error" style="
 position:  absolute;

@@ -2,6 +2,7 @@
 
 /* @var $this \yii\web\View */
 
+use app\models\User;
 use yii\helpers\Url;
 
 ?>
@@ -48,9 +49,19 @@ use yii\helpers\Url;
                         <li><a href="<?= Url::to(['site/feedback']) ?>">ОБРАТНАЯ СВЯЗЬ</a></li>
                     </ul>
                 </li>
-                <li class="dropdown1"><a href="<?= Url::to(['site/login']) ?>">ВХОД</a>
+                <li class="dropdown1">
+                    <a href="<?= Yii::$app->user->isGuest ? Url::to(['site/login']) : Url::to(['user/cabinet']) ?>" title="ПОЛЬЗОВАТЕЛЬ">Пользователь</a>
                     <ul class="dropdown2">
-                        <li><a href="<?= Url::to(['user/register']) ?>">РЕГИСТРАЦИЯ</a></li>
+                        <?php if (Yii::$app->user->isGuest): ?>
+                            <li><a href="<?= Url::to(['site/login']) ?>">ВХОД</a></li>
+                            <li><a href="<?= Url::to(['user/register']) ?>">РЕГИСТРАЦИЯ</a></li>
+                        <?php else: ?>
+                            <?php if (Yii::$app->session->get('user.role') == User::USER_ADMIN) : ?>
+                                <li><a href="<?= Url::to(['user/cabinet']) ?>">АДМИН-ЗОНА</a></li>
+                            <?php endif; ?>
+                            <li><a href="<?= Url::to(['user/cabinet']) ?>">ЛИЧНЫЙ КАБИНЕТ</a></li>
+                            <li><a href="<?= Url::to(['site/logout']) ?>" data-method="post">ВЫХОД</a></li>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <!--                    <a class="shop" href="cart.html" title="Корзина"><h4><span class="glyphicon glyphicon-shopping-cart"></span></h4></a>-->
@@ -60,3 +71,12 @@ use yii\helpers\Url;
         <div class="clearfix"></div>
     </div>
 </div>
+<!--
+<script>
+    (function ($) {
+        $('.dropdown1').on('focus', function (e) {
+            console.log('y');
+        })
+    })(jQuery);
+</script>
+-->

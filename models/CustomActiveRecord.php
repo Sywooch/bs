@@ -12,7 +12,6 @@ class CustomActiveRecord extends ActiveRecord
 
     /**
      * @param bool $insert
-     *
      * @return bool
      */
     public function beforeSave($insert)
@@ -28,4 +27,13 @@ class CustomActiveRecord extends ActiveRecord
             return false;
         }
     }
+
+    /**
+     * @param $msg
+     * @return string
+     */
+//    public function getMessage($msg)
+//    {
+//        return ' - ' . Yii::t('app', $msg);
+//    }
 }

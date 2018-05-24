@@ -8,12 +8,12 @@ use yii\base\Model;
 /**
  * LoginForm is the model behind the login form.
  *
- * @property UserO|null $user This property is read-only.
+ * @property UserOld|null $user This property is read-only.
  *
  */
 class LoginForm extends Model
 {
-    public $username;
+//    public $username;
     public $email;
     public $password;
     public $rememberMe = true;
@@ -28,6 +28,8 @@ class LoginForm extends Model
     {
         return [
             [['email', 'password'], 'required'],
+            [['email'], 'string', 'length' => [5, 50]],
+            [['email'], 'email'],
             ['rememberMe', 'boolean'],
             ['password', 'validatePassword'],
         ];
@@ -39,10 +41,9 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-//            'username' => 'Username',
-            'email' => 'Электронный адрес',
-            'password' => 'Пароль',
-            'rememberMe' => 'Запомнить',
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),
+            'rememberMe' => Yii::t('app', 'RememberMe'),
         ];
     }
 
@@ -59,7 +60,7 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, ' - неверный адрес или пароль.');
             }
         }
     }
@@ -71,7 +72,14 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            /** @var User $user */
+            $user = $this->getUser();
+//            var_dump($user);
+
+            $user->touch('last_login');
+            Yii::$app->session->set('user.role', $user->role);
+
+            return Yii::$app->user->login($user, $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;
     }
@@ -79,12 +87,12 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return UserO|null
+     * @return User|null
      */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = UserO::findByUsername($this->username);
+            $this->_user = User::findByEmail($this->email);
         }
 
         return $this->_user;
