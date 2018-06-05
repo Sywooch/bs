@@ -12,16 +12,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="register bg-grey">
     <div class="container">
-        <h2 class="my-4"><?= Html::encode($this->title) ?></h2>
+        <h2><?= Html::encode($this->title) ?></h2>
 
         <?php $form = ActiveForm::begin([
             'id' => 'register-form',
             'options' => [
-                'class' => 'col-sm-6 mb-5',
+                'class' => 'col-sm-6',
             ],
             'fieldConfig' => [
-//                'template' => "{label}\n{beginWrapper}\n{input}\n{error}\n{endWrapper}",
                 'template' => "{label}{error}\n{input}",
+//                'template' => "{label}\n{beginWrapper}\n{input}\n{error}\n{endWrapper}",
             ],
         ]); ?>
 
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
             <?= Html::submitButton(Yii::t('app', 'RegisterBtn'),
-                ['class' => 'btn btn-site mt-3', 'name' => 'sent', 'value' => 'was', 'id' => 'test']) ?>
+                ['class' => 'btn btn-site', 'name' => 'sent', 'value' => 'was']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

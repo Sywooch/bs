@@ -40,7 +40,7 @@ class Category extends \yii\db\ActiveRecord
             [['group_id', 'priority', 'created_at', 'updated_at', 'status', 'version'], 'integer'],
             [['title'], 'string', 'max' => 150],
             [['img'], 'string', 'max' => 255],
-            [['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => Group::className(), 'targetAttribute' => ['group_id' => 'id']],
+            [['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => Group::class, 'targetAttribute' => ['group_id' => 'id']],
         ];
     }
 
@@ -67,7 +67,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getGroup()
     {
-        return $this->hasOne(Group::className(), ['id' => 'group_id']);
+        return $this->hasOne(Group::class, ['id' => 'group_id']);
     }
 
     /**
@@ -75,7 +75,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['category_id' => 'id']);
+        return $this->hasMany(Product::class, ['category_id' => 'id']);
     }
 
     /**

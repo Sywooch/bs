@@ -74,7 +74,6 @@ class LoginForm extends Model
         if ($this->validate()) {
             /** @var User $user */
             $user = $this->getUser();
-//            var_dump($user);
 
             $user->touch('last_login');
             Yii::$app->session->set('user.role', $user->role);

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
         <h4>Нам можно написать:</h4>
         <ul class="list-group pl-5">
-            <li>через <a href="<?= Url::to(['site/contact']) ?>">форму обратной связи</a>.</li>
+            <li>через <a href="<?= Url::to(['/site/contact']) ?>">форму обратной связи</a>.</li>
             <li>на адрес: <a href="mailto: <?= Yii::$app->params['infoEmail'] ?>"><?= Yii::$app->params['infoEmail'] ?></a></li>
         </ul>
         <h4>Адрес офиса:</h4>

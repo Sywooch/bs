@@ -14,7 +14,7 @@ $model->rememberMe = false;
 
 <div class="login bg-grey">
     <div class="container">
-        <h2 class="my-4"><?= Html::encode($this->title) ?></h2>
+        <h2><?= Html::encode($this->title) ?></h2>
 
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',

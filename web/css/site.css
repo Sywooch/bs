@@ -12,14 +12,21 @@ body a {
     -ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6 {
-    margin:0;
+    /*margin:0;*/
 }
 p {
-    margin:0;
+    /*margin:0;*/
 }
 ul {
     margin:0;
     padding:0;
+}
+form {
+    padding-bottom: 1em;
+    /*margin-bottom: 1em;*/
+}
+hr {
+    border-color: #000;
 }
 .bg-grey {
     background: linear-gradient(to bottom left, #b0b0b0, #f7f7f7);
@@ -31,6 +38,17 @@ ul {
 /*----- HEADER -----*/
 .banner-bg{
     position:relative;
+}
+/*----- TOTAL -----*/
+.banner-sec{
+    background:url(../images/bg.jpg) no-repeat;
+    background-size:cover;
+    min-height:200px;
+}
+.banner-adm {
+    background:url(../images/bg2.jpg) no-repeat;
+    background-size:cover;
+    min-height:200px;
 }
 
 /*----- MENU -----*/
@@ -108,7 +126,9 @@ a.shop{
 
 /*----- BREADCRUMB -----*/
 .breadcrumb {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
+    position: absolute;
+    top: 155px;
     margin-bottom: 0;
     background-color: transparent;
 }
@@ -242,13 +262,6 @@ a.morebtn:hover{
     position:absolute;
     bottom:10%;
     left:47%;
-}
-
-/*----- TOTAL -----*/
-.banner-sec{
-    background:url(../images/bg.jpg) no-repeat;
-    background-size:cover;
-    min-height:200px;
 }
 
 /*----- 404-PAGE -----*/
@@ -425,10 +438,31 @@ a.morebtn:hover{
     width: 90%;
     margin-left: 5%;
 }
+.head-th {
+    text-align: center;
+}
+.image-td {
+    max-height: 100px;
+}
+thead {
+    background-color: #b7b7b7;
+    border-color: #999;
+}
+.i-border {
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+}
+.checkbox-list label {
+    margin-right: 1em;
+}
+
+/*
 .png_link {
     filter: invert(100%);
 }
-
+*/
 /*
 <p class="help-block help-block-error" style="
 position:  absolute;

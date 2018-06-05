@@ -1,13 +1,15 @@
 <?php
 
-namespace app\models;
+namespace app\modules\admin\models;
+
+use yii\db\ActiveQuery;
 
 /**
- * This is the ActiveQuery class for [[Group]].
+ * This is the ActiveQuery class for [[TagRelation]].
  *
- * @see Group
+ * @see TagRelation
  */
-class GroupQuery extends \yii\db\ActiveQuery
+class TagRelationQuery extends ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +18,7 @@ class GroupQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Group[]|array
+     * @return TagRelation[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +27,7 @@ class GroupQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Group|array|null
+     * @return TagRelation|array|null
      */
     public function one($db = null)
     {

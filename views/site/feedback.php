@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    ->textInput(['placeholder' => 'Сообщение'])
                     ->label(false) ?>
 
-                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                 ]) ?>
 

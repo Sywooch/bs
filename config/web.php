@@ -13,11 +13,33 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'locale' => 'ru-RU',
+            'timeZone' => 'Europe/Kiev',
+            'defaultTimeZone' => 'Europe/Kiev',
+            'timeFormat' => 'php:H:i:s',
+            'dateFormat' => 'php:d.m.Y',
+            'datetimeFormat' => 'php:d.m.Y - H:i:s',
+            'decimalSeparator' => '.',
+            'nullDisplay' => '-',
+            'thousandSeparator' => '',
+            'currencyCode' => 'UAH',
+            'numberFormatterOptions' => [
+//                NumberFormatter::DECIMAL_SEPARATOR_SYMBOL => '.',
+//                NumberFormatter::GROUPING_SEPARATOR_SYMBOL => '',
+//                NumberFormatter::CURRENCY_CODE => 'UAH',
+                NumberFormatter::FRACTION_DIGITS => 2,
+//                NumberFormatter::MIN_FRACTION_DIGITS => 0,
+//                NumberFormatter::MAX_FRACTION_DIGITS => 2,
+            ],
+        ],
         'request' => [
             'cookieValidationKey' => 'PnxJr_xTNdR4jyu6zbvThBZLJQ69UZL6',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+//            'class' => 'yii\caching\MemCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -81,6 +103,12 @@ $config = [
             ],
         ],
         */
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'defaultRoute' => '/admin/index',
+        ],
     ],
     'params' => $params,
 ];

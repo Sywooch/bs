@@ -6,6 +6,7 @@ use Yii;
 use app\models\User;
 use app\models\UserSearch;
 use yii\bootstrap\ActiveForm;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -22,8 +23,19 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['register'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['register'],
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -42,9 +54,9 @@ class UserController extends Controller
         $model = new User();
 
         do {
-            if (!$model->load(Yii::$app->request->post())) {
-                break;
-            }
+//            if (!$model->load(Yii::$app->request->post())) {
+//                break;
+//            }
 
             if (Yii::$app->request->post('sent') === 'was') {
                 if ($model->validate()) {

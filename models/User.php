@@ -55,13 +55,13 @@ class User extends CustomActiveRecord implements IdentityInterface
             [['email'], 'email'],
             [['email'], 'unique'],
             [['password'], 'string', 'length' => [6, 18]],
-            ['password_repeat', 'compare', 'compareAttribute' => 'password'],
+            [['password_repeat'], 'compare', 'compareAttribute' => 'password'],
             [['name', 'surname'], 'string', 'max' => 25],
-            [['name', 'surname'], 'match', 'pattern' => Yii::$app->params['patterns']['name']],
+            [['name', 'surname'], 'match', 'pattern' => Yii::$app->params['patterns']['alpha-x']],
             [['phone'], 'string', 'max' => 20],
             [['phone'], 'match', 'pattern' => Yii::$app->params['patterns']['phone']],
             [['address'], 'string', 'max' => 255],
-            [['address'], 'match', 'pattern' => Yii::$app->params['patterns']['address']],
+            [['address'], 'match', 'pattern' => Yii::$app->params['patterns']['alphanum-x']],
             [['role', 'last_login', 'created_at', 'updated_at', 'blocked_at', 'status', 'version'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
         ];
@@ -122,7 +122,7 @@ class User extends CustomActiveRecord implements IdentityInterface
 //                    }
 //                }
 //            ],
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
 

@@ -138,8 +138,7 @@ if (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id ==
 
 <div class="footer-bottom">
     <div class="container">
-        <p><?= Yii::powered() ?> | Дизайн темы <a href="http://w3layouts.com/"> W3layouts</a></p>
-
+        <p><?= Yii::powered() ?> | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
     </div>
 </div>
 

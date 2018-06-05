@@ -29,11 +29,12 @@ phpunit.phar
 tests/_output/*
 tests/_support/_generated
 
-#vagrant folder
+# vagrant folder
 /.vagrant
 
-#yii
+# yii
 runtime
 
 #user files
 .temp
+web/uploads
