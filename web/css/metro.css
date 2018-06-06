@@ -57,9 +57,6 @@
     font-weight: 400;
     color: #555555;
 }
-.product_right {
-    margin-bottom: 2em;
-}
 /* .focus class is also added on hover */
 .metro:hover .selected::after, .metro.focus .selected::after {
     background: url(../images/p_minus.png) no-repeat 0px 10px;

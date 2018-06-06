@@ -38,3 +38,4 @@ runtime
 #user files
 .temp
 web/uploads
+web/css/style.css

@@ -2,17 +2,22 @@
 
 namespace app\models;
 
+use yii\db\ActiveQuery;
+
 /**
  * This is the ActiveQuery class for [[Product]].
  *
  * @see Product
  */
-class ProductQuery extends \yii\db\ActiveQuery
+class ProductQuery extends ActiveQuery
 {
-    /*public function active()
+    /**
+     * @return ProductQuery
+     */
+    public function active()
     {
-        return $this->andWhere('[[status]]=1');
-    }*/
+        return $this->andWhere(['status' => CustomActiveRecord::STATUS_ACTIVE]);
+    }
 
     /**
      * {@inheritdoc}
@@ -31,4 +36,16 @@ class ProductQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * @return array
+     */
+//    public function getListProducts()
+//    {
+//        return $this->select(['title', 'id'])
+//            ->active()
+//            ->indexBy('id')
+//            ->orderBy('title')
+//            ->column();
+//    }
 }

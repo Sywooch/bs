@@ -61,4 +61,18 @@ class CategoryQuery extends ActiveQuery
             ->orderBy('title')
             ->all();
     }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function getSubCategories($id)
+    {
+        return $this->select(['title', 'id'])
+            ->where(['parent_id' => $id])
+            ->active()
+            ->indexBy('id')
+            ->orderBy(['priority' => SORT_DESC, 'title' => SORT_ASC])
+            ->column();
+    }
 }

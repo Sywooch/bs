@@ -24,6 +24,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/responsive.css',
         'css/nav.css',
+        'css/metro.css',
+        'css/form.css',
         'css/bs_add.css',
     ];
     public $js = [

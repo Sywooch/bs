@@ -28,25 +28,6 @@ use yii\helpers\Url;
                 </li>
                 <li class="dropdown1"><a href="parts.html">ПОЛЬЗОВАТЕЛИ</a>
                     <ul class="dropdown2">
-                        <li><a href="parts.html">КАМЕРЫ</a></li>
-                        <li><a href="parts.html">ШИНЫ</a></li>
-                        <li><a href="parts.html">ТОРМОЗА</a></li>
-                        <li><a href="parts.html">ЦЕПИ</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown1"><a href="accessories.html">АКСЕССУАРЫ</a>
-                    <ul class="dropdown2">
-                        <li><a href="accessories.html">ШЛЕМЫ</a></li>
-                        <li><a href="accessories.html">ЗАЩИТА</a></li>
-                        <li><a href="accessories.html">ЗАМКИ</a></li>
-                        <li><a href="accessories.html">jerseys</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown1"><a href="<?= Url::to(['/site/about']) ?>">ИНФОРМАЦИЯ</a>
-                    <ul class="dropdown2">
-                        <li><a href="<?= Url::to(['/site/about']) ?>">О НАС</a></li>
-                        <li><a href="<?= Url::to(['/site/contacts']) ?>">КОНТАКТЫ</a></li>
-                        <li><a href="<?= Url::to(['/site/feedback']) ?>">ОБРАТНАЯ СВЯЗЬ</a></li>
                     </ul>
                 </li>
                 <li class="dropdown1"><a href="<?= Url::to(['/site/logout']) ?>" data-method="post">ВЫХОД</a></li>

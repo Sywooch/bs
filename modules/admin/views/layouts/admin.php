@@ -52,7 +52,14 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <!--banner-->
-<div class="banner-bg banner-adm">
+<?php
+$banner = 'banner-adm';
+if (Yii::$app->controller->id === 'admin' && Yii::$app->controller->action->id === 'index') {
+    $banner = 'banner-bg2';
+}
+?>
+
+<div class="banner-bg banner-adm <?= $banner ?>">
     <?= $this->render('menu.php')?>
 
     <?php try {

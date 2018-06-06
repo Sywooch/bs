@@ -3,8 +3,14 @@
 /* @var $this \yii\web\View */
 
 use app\models\User;
+use app\modules\admin\models\Category;
 use yii\helpers\Url;
 
+$category_list = Category::find()->getParentCategories();
+$bike_list = Category::find()->getSubCategories(1);
+$part_list = Category::find()->getSubCategories(4);
+$accessory_list = Category::find()->getSubCategories(17);
+//var_dump($category_list, $bike_list, $part_list, $accessory_list);
 ?>
 
 <div class="container">
@@ -18,28 +24,31 @@ use yii\helpers\Url;
             </label>
             <input id="mobile_menu" type="checkbox">
             <ul class="nav">
-                <li class="dropdown1"><a href="bicycles.html">ВЕЛОСИПЕДЫ</a>
+                <li class="dropdown1">
+                    <a href="<?= Url::toRoute(['product/list', 'parent_id' => 1])?>"><?= $category_list[1] ?></a>
                     <ul class="dropdown2">
-                        <li><a href="bicycles.html">ГОРОДСКИЕ</a></li>
-                        <li><a href="bicycles.html">ШОССЕЙНЫЕ</a></li>
-                        <li><a href="bicycles.html">ГОРНЫЕ</a></li>
-                        <li><a href="bicycles.html">ПРЕМИУМ</a></li>
+                        <li><a href="<?= Url::toRoute(['product/popular', 'parent_id' => 1, 'tag_id' => 2])?>"><?= Yii::t('app', 'Popular') ?></a></li>
+                        <?php foreach ($bike_list as $id => $value): ?>
+                            <li><a href="<?= Url::toRoute(['product/list', 'category_id' => $id])?>"><?= $value ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
-                <li class="dropdown1"><a href="parts.html">ЗАПЧАСТИ</a>
+                <li class="dropdown1">
+                    <a href="<?= Url::toRoute(['product/list', 'parent_id' => 4])?>"><?= $category_list[4] ?></a>
                     <ul class="dropdown2">
-                        <li><a href="parts.html">КАМЕРЫ</a></li>
-                        <li><a href="parts.html">ШИНЫ</a></li>
-                        <li><a href="parts.html">ТОРМОЗА</a></li>
-                        <li><a href="parts.html">ЦЕПИ</a></li>
+                        <li><a href="<?= Url::toRoute(['product/popular', 'parent_id' => 4, 'tag_id' => 2])?>"><?= Yii::t('app', 'Popular') ?></a></li>
+                        <?php foreach ($part_list as $id => $value): ?>
+                            <li><a href="<?= Url::toRoute(['product/list', 'category_id' => $id])?>"><?= $value ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
-                <li class="dropdown1"><a href="accessories.html">АКСЕССУАРЫ</a>
+                <li class="dropdown1">
+                    <a href="<?= Url::toRoute(['product/list', 'parent_id' => 17])?>"><?= $category_list[17] ?></a>
                     <ul class="dropdown2">
-                        <li><a href="accessories.html">ШЛЕМЫ</a></li>
-                        <li><a href="accessories.html">ЗАЩИТА</a></li>
-                        <li><a href="accessories.html">ЗАМКИ</a></li>
-                        <li><a href="accessories.html">jerseys</a></li>
+                        <li><a href="<?= Url::toRoute(['product/popular', 'parent_id' => 17, 'tag_id' => 2])?>"><?= Yii::t('app', 'Popular') ?></a></li>
+                        <?php foreach ($accessory_list as $id => $value): ?>
+                            <li><a href="<?= Url::toRoute(['product/list', 'category_id' => $id])?>"><?= $value ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
                 <li class="dropdown1"><a href="<?= Url::to(['/site/about']) ?>">ИНФОРМАЦИЯ</a>

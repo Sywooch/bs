@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\User;
 use app\modules\admin\models\Image;
 use Yii;
 use app\modules\admin\models\Product;
@@ -25,7 +26,6 @@ class ProductController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => [],
@@ -41,6 +41,24 @@ class ProductController extends Controller
                 ],
             ],
         ];
+    }
+
+    /**
+     * @param $action
+     * @return bool|\yii\web\Response
+     * @throws \yii\web\BadRequestHttpException
+     */
+    public function beforeAction($action)
+    {
+        if (Yii::$app->session->get('user.role') < User::USER_ADMIN) {
+            return $this->redirect(['/site/error']);
+        }
+
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

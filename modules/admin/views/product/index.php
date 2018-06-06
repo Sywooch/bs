@@ -38,7 +38,10 @@ $tags_list = Tag::find()->getListTags();
                         'contentOptions' => ['class' => 'text-center'],
                     ],
 
-                    'title',
+                    [
+                        'attribute' => 'title',
+                        'headerOptions' => ['width' => '25%', 'class' => 'head-th'],
+                    ],
                     [
                         'attribute' => 'category_id',
                         'headerOptions' => ['width' => '25%', 'class' => 'head-th'],
@@ -50,7 +53,7 @@ $tags_list = Tag::find()->getListTags();
                     ],
                     [
                         'label' => Yii::t('app', 'Tags'),
-                        'headerOptions' => ['width' => '25%', 'class' => 'head-th'],
+                        'headerOptions' => ['width' => '20%', 'class' => 'head-th'],
                         'attribute' => 'tag_id',
 //                        'filter' => Tag::find()->getListTags(),
                         'filter' => $tags_list,
