@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Product;
 use app\models\ProductSearch;
+use app\modules\admin\models\Category;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -75,11 +76,17 @@ class ProductController extends Controller
      */
     public function actionPopular()
     {
+        $params = Yii::$app->request->queryParams;
+        if (isset($params['parent_id'])) {
+            $category = Category::findOne($params['parent_id']);
+        }
         $searchModel = new ProductSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, true);
+
+        $dataProvider = $searchModel->search($params, true);
 
         return $this->render('popular', [
             'dataProvider' => $dataProvider,
+            'category' => empty($category) ? '' : $category->title
         ]);
     }
 

@@ -67,11 +67,6 @@ class User extends CustomActiveRecord implements IdentityInterface
         ];
     }
 
-    public function validateName()
-    {
-
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -110,18 +105,6 @@ class User extends CustomActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-//            'authenticator' => [
-//                'class' => HttpBasicAuth::className(),
-//                'realm' => 'Protected area',
-//                'auth' => function($username, $password) {
-//                    $user = User::findByUsername($username);
-//                    if ($user && $user->validatePassword($password)) {
-//                        return $user;
-//                    } else {
-//                        return null;
-//                    }
-//                }
-//            ],
             TimestampBehavior::class,
         ];
     }

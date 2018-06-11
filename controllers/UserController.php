@@ -5,12 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
-use yii\bootstrap\ActiveForm;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\web\Response;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -25,12 +23,17 @@ class UserController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['register'],
+//                'only' => ['create'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['register'],
+                        'actions' => ['create'],
                         'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -41,43 +44,6 @@ class UserController extends Controller
                 ],
             ],
         ];
-    }
-
-    /**
-     * New user registration
-     *
-     * @return array|string|Response
-     * @throws \yii\base\Exception
-     */
-    public function actionRegister()
-    {
-        $model = new User();
-
-        do {
-//            if (!$model->load(Yii::$app->request->post())) {
-//                break;
-//            }
-
-            if (Yii::$app->request->post('sent') === 'was') {
-                if ($model->validate()) {
-                    $model->setPassword($model->password);
-                    $model->save(false);
-
-                    return $this->goBack();
-                }
-                break;
-            }
-
-//            if (Yii::$app->request->isAjax) {
-//                Yii::$app->response->format = Response::FORMAT_JSON;
-//                return ActiveForm::validate($model, 'email');
-//            }
-
-        } while (0);
-
-        return $this->render('register', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -110,16 +76,40 @@ class UserController extends Controller
 
     /**
      * Creates a new User model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * If creation is successful, the browser will be redirected to the Home page.
      * @return mixed
+     * @throws \yii\base\Exception
      */
     public function actionCreate()
     {
         $model = new User();
+        $model->loadDefaultValues();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+        do {
+            if (!Yii::$app->request->isPost) break;
+
+            if (!$model->load(Yii::$app->request->post())) break;
+
+            if (!$model->validate()) {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Validation error'));
+                break;
+            }
+
+            $model->setPassword($model->password);
+
+            if (!$model->save(false)) {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Error saving'));
+                break;
+            }
+
+            return $this->goBack();
+
+//            if (Yii::$app->request->isAjax) {
+//                Yii::$app->response->format = Response::FORMAT_JSON;
+//                return ActiveForm::validate($model, 'email');
+//            }
+
+        } while (0);
 
         return $this->render('create', [
             'model' => $model,
@@ -129,20 +119,42 @@ class UserController extends Controller
     /**
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \yii\base\Exception
      */
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel(Yii::$app->user->id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+        do {
+            if (!Yii::$app->request->isPost) break;
 
-        return $this->render('update', [
-            'model' => $model,
+            if (!$model->load(Yii::$app->request->post())) break;
+
+            if (!$model->validate()) {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Validation error'));
+                break;
+            }
+
+            $model->setPassword($model->password);
+
+            if (!$model->save(false)) {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Error saving'));
+                break;
+            }
+
+            return $this->goBack();
+
+        } while (0);
+
+        $model->password = '';
+        return $this->render('/cabinet/index', [
+            'title' => Yii::t('app', Yii::t('app', 'Personal Data')),
+            'page' => '/user/_form',
+            'content' => [
+                'model' => $model
+            ],
         ]);
     }
 

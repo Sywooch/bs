@@ -8,40 +8,41 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
+<?php $form = ActiveForm::begin([
+    'id' => 'register-form',
+    'options' => [
+        'class' => 'col-md-6 col-sm-9',
+    ],
+    'fieldConfig' => [
+        'template' => "{label}{error}\n{input}",
+//                'template' => "{label}\n{beginWrapper}\n{input}\n{error}\n{endWrapper}",
+    ],
+]); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+<?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'surname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'role')->textInput() ?>
+<?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'last_login')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'email')->textInput(['maxlength' => true]) // ['enableAjaxValidation' => true] ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'surname')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+<?php //echo $form->field($model, 'role')->textInput() ?>
+<?php //echo $form->field($model, 'blocked_at')->textInput(['maxlength' => true, 'disabled' => 'true']) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'status')->label(false)->hiddenInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'version')->label(false)->hiddenInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'blocked_at')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'version')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
+<div class="form-group">
+    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'RegisterBtn') :
+        Yii::t('app', 'Save'), ['class' => 'btn btn-site']) ?>
 </div>
+
+<?php ActiveForm::end(); ?>

@@ -37,5 +37,6 @@ runtime
 
 #user files
 .temp
+config/db.php
 web/uploads
 web/css/style.css

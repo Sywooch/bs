@@ -118,8 +118,8 @@ class SiteController extends Controller
     {
         $model = new FeedbackForm();
         if ($model->load(Yii::$app->request->post()) && $model->feedback(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-//            Yii::$app->session->setFlash('success', 'contactFormSubmitted');
+            Yii::$app->session->addFlash('contactFormSubmitted');
+//            Yii::$app->session->addFlash('success', 'contactFormSubmitted');
 
             return $this->refresh();
         }
@@ -146,5 +146,21 @@ class SiteController extends Controller
     public function actionContacts()
     {
         return $this->render('contacts');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionPayment()
+    {
+        return $this->render('payment');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionWarranty()
+    {
+        return $this->render('warranty');
     }
 }

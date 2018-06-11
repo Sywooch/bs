@@ -93,7 +93,8 @@ class Product extends CustomActiveRecord
      */
     public function getSum()
     {
-        return $this->price/100;
+//        return $this->price * (100 - $this->discount) / 10000;
+        return $this->price / 100;
     }
 
     /**

@@ -100,14 +100,14 @@ class Image extends CustomActiveRecord
         $file_name = md5(uniqid()) . '.' . strtolower($this->imageFile->extension);
 
         if (!Library::checkDir(Yii::$app->params['product_images'])) {
-            Yii::$app->session->setFlash('error', Yii::t('app', 'No img dir.'));
+            Yii::$app->session->addFlash('error', Yii::t('app', 'No img dir.'));
             return false;
         }
 
         $this->removeImageFile();
 
         if (!$this->imageFile->saveAs(Yii::$app->params['product_images'] . DIRECTORY_SEPARATOR . $file_name)) {
-            Yii::$app->session->setFlash('error', Yii::t('yii', 'File upload failed.'));
+            Yii::$app->session->addFlash('error', Yii::t('yii', 'File upload failed.'));
             return false;
         }
 

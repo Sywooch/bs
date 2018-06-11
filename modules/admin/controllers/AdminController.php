@@ -2,61 +2,13 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\User;
 use app\modules\admin\models\Product;
-use Yii;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 
 /**
  * Admin controller for the `admin` module
  */
-class AdminController extends Controller
+class AdminController extends CustomController
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => [],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @param $action
-     * @return bool|\yii\web\Response
-     * @throws \yii\web\BadRequestHttpException
-     */
-    public function beforeAction($action)
-    {
-        if (Yii::$app->session->get('user.role') < User::USER_ADMIN) {
-            return $this->redirect(['/site/error']);
-        }
-
-        if (!parent::beforeAction($action)) {
-            return false;
-        }
-
-        return true;
-    }
-
     /**
      * Renders the index view for the module
      * @return string

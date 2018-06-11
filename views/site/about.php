@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'О наc';
+$this->title = Yii::t('app', 'About');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

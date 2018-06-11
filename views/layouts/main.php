@@ -3,10 +3,12 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
-use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\widgets\Alert;
+use yii\bootstrap\Modal;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 ?>
@@ -24,7 +26,6 @@ AppAsset::register($this);
     <?php $this->head() ?>
 
     <!-- jQuery (Bootstrap's JavaScript plugins) -->
-<!--    <script src="js/jquery.min.js"></script>-->
     <!-- Custom Theme files -->
     <script type="application/x-javascript">
         addEventListener("load", function() {
@@ -38,7 +39,6 @@ AppAsset::register($this);
     <link href='http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
     <!--webfont-->
     <!-- dropdown -->
-<!--    <script src="js/jquery.easydropdown.js"></script>-->
     <!--js-->
     <!---- start-smoth-scrolling---->
     <script type="text/javascript" src="js/move-top.js"></script>
@@ -71,6 +71,14 @@ AppAsset::register($this);
 </script>
 
 <?php
+Modal::begin([
+    'id' => 'cart-modal',
+    'size' => 'modal-lg',
+    'header' => '<h3 class="ml-5">' . Yii::t('app', 'Cart') . '</h3>',
+]);
+Modal::end() ?>
+
+<?php
 $banner = 'banner-sec';
 if (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id === 'index') {
     $banner = 'banner-bg1';
@@ -80,18 +88,29 @@ if (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id ==
 <div class="banner-bg <?= $banner ?>">
     <?= $this->render('menu.php')?>
 
-    <?= Breadcrumbs::widget([
-        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]) ?>
+    <?php try {
+        echo Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]);
+    } catch (Exception $e) {
+        echo Yii::t('app', '{nameAttribute}: {message}', [
+            'nameAttribute' => Yii::t('yii', 'Error'),
+            'message' => $e->getMessage(),
+        ]);
+    } ?>
 </div>
 <!--/banner-->
 
-
 <div class="wrap">
-<!--    <div class="container">-->
-        <?= Alert::widget() ?>
-        <?= $content ?>
-<!--    </div>-->
+    <?php try {
+        echo Alert::widget();
+    } catch (Exception $e) {
+        echo Yii::t('app', '{nameAttribute}: {message}', [
+            'nameAttribute' => Yii::t('yii', 'Error'),
+            'message' => $e->getMessage(),
+        ]);
+    } ?>
+    <?= $content ?>
 </div>
 
 <footer class="footer">
@@ -108,7 +127,7 @@ if (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id ==
                 <dd>(050) 505-05-05</dd>
                 <dd>(063) 636-36-36</dd>
                 <dd>(068) 686-86-86</dd>
-                <dd class="mt-2">e-mail: <a href="mailto: <?= Yii::$app->params['infoEmail'] ?>"><?= Yii::$app->params['infoEmail'] ?></dd>
+                <dd class="mt-2">e-mail: <a href="mailto: <?= Yii::$app->params['infoEmail'] ?>"><?= Yii::$app->params['infoEmail'] ?></a></dd>
                 <dd></dd>
             </dl>
         </div>
@@ -116,18 +135,18 @@ if (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id ==
         <div class="ftr-menu">
             <dl>
                 <dt>Клиентам</dt>
-                <dd><a href="bicycles.html">Вход в личный кабинет</a></dd>
-                <dd><a href="parts.html">Оплата и доставка</a></dd>
-                <dd><a href="accessories.html">Гарантия</a></dd>
+                <dd><a href="<?= Url::toRoute(['/cabinet/index'])?>">Вход в личный кабинет</a></dd>
+                <dd><a href="<?= Url::toRoute(['/site/payment'])?>">Оплата и доставка</a></dd>
+                <dd><a href="<?= Url::toRoute(['/site/warranty'])?>">Гарантия</a></dd>
             </dl>
         </div>
 
         <div class="ftr-menu">
             <dl>
                 <dt>Каталог</dt>
-                <dd><a href="bicycles.html">Велосипеды</a></dd>
-                <dd><a href="parts.html">Запчасти</a></dd>
-                <dd><a href="accessories.html">Аксессуары</a></dd>
+                <dd><a href="<?= Url::toRoute(['product/list', 'parent_id' => 1])?>">Велосипеды</a></dd>
+                <dd><a href="<?= Url::toRoute(['product/list', 'parent_id' => 4])?>">Запчасти</a></dd>
+                <dd><a href="<?= Url::toRoute(['product/list', 'parent_id' => 17])?>">Аксессуары</a></dd>
             </dl>
         </div>
 

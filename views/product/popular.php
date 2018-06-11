@@ -1,15 +1,15 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $category string */
 
 use yii\bootstrap\Html;
 use yii\helpers\Url;
 
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = Yii::t('app', '{modelClass} {nameAttribute}', [
     'modelClass' => Yii::t('app', 'Popular'),
-    'nameAttribute' => ''
+    'nameAttribute' => $category,
 ]);
 $this->params['breadcrumbs'][] = $this->title;
 

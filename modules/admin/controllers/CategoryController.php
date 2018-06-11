@@ -2,63 +2,16 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\User;
 use Yii;
 use app\modules\admin\models\Category;
 use app\modules\admin\models\CategorySearch;
-use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
-class CategoryController extends Controller
+class CategoryController extends CustomController
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => [],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @param $action
-     * @return bool|\yii\web\Response
-     * @throws \yii\web\BadRequestHttpException
-     */
-    public function beforeAction($action)
-    {
-        if (Yii::$app->session->get('user.role') < User::USER_ADMIN) {
-            return $this->redirect(['/site/error']);
-        }
-
-        if (!parent::beforeAction($action)) {
-            return false;
-        }
-
-        return true;
-    }
-
     /**
      * Lists all Category models.
      * @return mixed
@@ -105,11 +58,11 @@ class CategoryController extends Controller
                 break;
             }
             if (!$model->validate()) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Validation error'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Validation error'));
                 break;
             }
             if (!$model->save(false)) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Error saving'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Error saving'));
                 break;
             }
 //            return $this->redirect(['view', 'id' => $model->id]);
@@ -141,18 +94,18 @@ class CategoryController extends Controller
                 break;
             }
             if (!$model->validate()) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Validation error'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Validation error'));
                 break;
             }
 
             if ($model->version != $model->oldAttributes['version']) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Data changed'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Data changed'));
                 break;
             }
             $model->version += 1;
 
             if (!$model->save(false)) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Error saving'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Error saving'));
                 break;
             }
             return $this->redirect(['view', 'id' => $model->id]);

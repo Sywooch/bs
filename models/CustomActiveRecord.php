@@ -18,9 +18,9 @@ class CustomActiveRecord extends ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             if ($insert) {
-                Yii::$app->session->setFlash('success', 'Запись добавлена.');
+                Yii::$app->session->addFlash('success', 'Запись добавлена.');
             } else {
-                Yii::$app->session->setFlash('success', 'Запись изменена.');
+                Yii::$app->session->addFlash('success', 'Запись изменена.');
             }
             return true;
         } else {

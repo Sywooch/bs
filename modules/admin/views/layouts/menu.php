@@ -28,9 +28,10 @@ use yii\helpers\Url;
                 </li>
                 <li class="dropdown1"><a href="parts.html">ПОЛЬЗОВАТЕЛИ</a>
                     <ul class="dropdown2">
+                        <li><a href="<?//= Url::toRoute(['admin/gent'])?>">ГЕН</a></li>
                     </ul>
                 </li>
-                <li class="dropdown1"><a href="<?= Url::to(['/site/logout']) ?>" data-method="post">ВЫХОД</a></li>
+                <li class="dropdown1"><a href="<?= Url::toRoute(['/site/logout']) ?>" data-method="post">ВЫХОД</a></li>
             </ul>
         </div>
         <div class="clearfix"></div>

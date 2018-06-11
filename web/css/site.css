@@ -409,9 +409,12 @@ a.morebtn:hover{
 
 /*----- BUTTON -----*/
 .btn-site {
-    color: #fff;
+    color: #000;
     background-color: #b7b7b7;
     border-color: #999;
+    text-transform: uppercase;
+}
+.btn-site .uct {
 }
 .btn-site:hover {
     color: #fcff19;
@@ -613,9 +616,6 @@ select{
     text-align:center;
     position:relative;
 }
-.part-sec:hover div a.add-cart{
-    display:block;
-}
 .part-sec img{
     width:100%;
     height: 200px;
@@ -636,22 +636,7 @@ select{
     font-weight:400;
     margin-top:5px;
 }
-a.add-cart{
-    background:#000;
-    color:#fcff19;
-    padding:5px 1em;
-    font-size:1em;
-    display:inline-block;
-    margin-right:1em;
-    font-weight:500;
-    position:absolute;
-    top: 36%;
-    left: 21%;
-    display:none;
-}
-a.add-cart:hover{
 
-}
 a.qck{
     background:#969696;
     color:#fff;
@@ -758,7 +743,7 @@ h3.m_2 {
     color: #555555;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-text-stroke: 0px;
+    -webkit-text-stroke-width: 0px;
     letter-spacing: 0px;
 }
 .details-left-info a:hover{
@@ -951,7 +936,10 @@ a.button1 {
 }
 /*--cart--*/
 .cart{
-    padding:2em 0;
+    padding: 2em 0;
+}
+.cart .container {
+    max-width: 100%;
 }
 .cart-top{
     background:#eee;
@@ -980,10 +968,6 @@ p.qty {
     padding: 9px 0px 8px;
     outline: none;
     text-align: center;
-}
-.form-control {
-    /*display: inline-block;*/
-    /*width: 13%;*/
 }
 .cart h2{
     font-size:1.5em;
@@ -1041,8 +1025,12 @@ p.qty {
     font-weight:400;
     line-height:1.3em;
 }
+.cart-item-info .form-control {
+    display: inline-block;
+    width: 20%;
+}
 .close1,.close2{
-    background: url('../images/close.png') no-repeat 0px 0px;
+    background: url('../images/close.png') no-repeat 0 0;
     cursor: pointer;
     width: 28px;
     height: 28px;
@@ -1120,10 +1108,11 @@ h4.last-price{
     font-weight:600;
     width:50%;
     float:left;
-    padding-top:10px;
+    text-transform: uppercase;
+    /*padding-top:10px;*/
 }
 .cart-total {
-    padding-top: 26px;
+    padding-top: 1em;
     border-left: 1px solid;
 }
 a.order {
@@ -1181,33 +1170,36 @@ a.cpns:hover{
 }
 
 
-
-/*
-.png_link {
-    filter: invert(100%);
+.cart-img:hover img {
+    filter: brightness(-100%);
 }
-*/
-/*
-<p class="help-block help-block-error" style="
-position:  absolute;
-border: 1px solid #900;
-padding:  10px;
-border-radius:  3px;
-top: 50px;
-left: 50px;
-width:  480px;
-background-color: #DDF;
-">Необходимо заполнить «Электронный адрес».</p>
 
-<p class="help-block help-block-error" style="
-    position:  absolute;
-    border: 1px solid #900;
-    padding: 5px;
-    border-radius:  3px;
-    top: 50px;
-    left: 100px;
-    background-color: #f80;
-    font-size:  0.8em;
-    color:  #fff;
-">Необходимо заполнить «Электронный адрес».</p>
+.badge {
+    background-color: red;
+}
+
+.personal-content {
+    border-left: 1px solid #727272;
+    padding-left: 2em;
+}
+/*
+a.add-cart{
+    background:#000;
+    color:#fcff19;
+    padding:5px 1em;
+    font-size:1em;
+    display:inline-block;
+    margin-right:1em;
+    font-weight:500;
+    position:absolute;
+    top: 36%;
+    left: 21%;
+    display:none;
+}
+a.add-cart:hover{
+
+}
+.part-sec:hover div a.add-cart{
+    display:block;
+}
 */

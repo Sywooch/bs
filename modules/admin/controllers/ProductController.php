@@ -2,65 +2,18 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\User;
-use app\modules\admin\models\Image;
 use Yii;
+use app\modules\admin\models\Image;
 use app\modules\admin\models\Product;
 use app\modules\admin\models\ProductSearch;
-use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
  */
-class ProductController extends Controller
+class ProductController extends CustomController
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => [],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @param $action
-     * @return bool|\yii\web\Response
-     * @throws \yii\web\BadRequestHttpException
-     */
-    public function beforeAction($action)
-    {
-        if (Yii::$app->session->get('user.role') < User::USER_ADMIN) {
-            return $this->redirect(['/site/error']);
-        }
-
-        if (!parent::beforeAction($action)) {
-            return false;
-        }
-
-        return true;
-    }
-
     /**
      * Lists all Product models.
      * @return mixed
@@ -109,11 +62,11 @@ class ProductController extends Controller
             }
 
             if (!$model->validate()) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Validation error'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Validation error'));
                 break;
             }
             if (!$model->save(false)) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Error saving'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Error saving'));
                 break;
             }
 
@@ -155,18 +108,18 @@ class ProductController extends Controller
                 break;
             }
             if (!$model->validate()) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Validation error'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Validation error'));
                 break;
             }
 
             if ($model->version != $model->oldAttributes['version']) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Data changed'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Data changed'));
                 break;
             }
             $model->version += 1;
 
             if (!$model->save(false)) {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'Error saving'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'Error saving'));
                 break;
             }
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\admin\models\Product */
+/* @var $model app\models\Product */
 
 $this->title = Yii::t('app', '{modelClass}: {nameAttribute}', [
     'modelClass' => Yii::t('app', 'Product'),
@@ -39,10 +39,13 @@ $features = $model->getValues()->with(['feature'])->all();
             <h4>Model No: <?= trim($name[1], ')') ?></h4>
             <h4></h4>
             <p><?= Yii::$app->formatter->asCurrency($model->price/100) ?></p>
-            <div class="btn_form">
-                <a href="cart.html" class="btn btn-site"><?= Yii::t('app', 'Buy') ?></a>
-                <a href="cart.html" class="btn btn-site"><?= Yii::t('app', 'Add To Cart') ?></a>
+            <div class="btn_form" data-id="<?= $model->id ?>">
+                <button class="btn btn-site buy"><?= Yii::t('app', 'Buy') ?></button>
+                <button class="btn btn-site add-cart"><?= Yii::t('app', 'Add To Cart') ?></button>
+
+<!--                <a href="--><?//= Url::toRoute(['/cart/add', 'id' => $model->id]) ?><!--" class="btn btn-site mt-3">--><?//= Yii::t('app', 'Add To Cart') ?><!--</a>-->
             </div>
+
             <div class="bike-type">
                 <p><?= Yii::t('app', 'Type') ?>  ::<a href="<?= Url::toRoute(['product/list', 'category_id' => $model->category->id ])?>"><?= $model->category->title ?></a></p>
 
@@ -56,3 +59,46 @@ $features = $model->getValues()->with(['feature'])->all();
         <div class="clearfix"></div>
     </div>
 </div>
+<script>
+    (function ($) {
+        $('.buy').on('click', function (e) {
+            $('#cart-modal').modal('show');
+
+            $.ajax({
+                type: "GET",
+                url: '/index.php?r=cart/add',
+                data: {
+                    id: $(this).parent('.btn_form').data('id'),
+                    type: 'buy'
+                },
+            })
+            .done(function (response) {
+                $('#cart-modal .modal-body').html(response);
+            })
+            .fail(function (jqXHR) {
+                alert("Request failed:\nОшибка запроса.\n" + jqXHR.responseText);
+            });
+        });
+    })(jQuery);
+
+    (function ($) {
+        $('.add-cart').on('click', function (e) {
+            $.ajax({
+                type: "GET",
+                url: '/index.php?r=cart/add',
+                data: {
+                    id: $(this).parent('.btn_form').data('id'),
+                },
+            })
+            .done(function (response) {
+                window.alert('Товар добавлен в корзину');
+                if ($.isNumeric(response) && response > 0) {
+                    $('span#cart-count').text(response);
+                }
+            })
+            .fail(function (jqXHR) {
+                alert("Request failed:\nОшибка запроса.\n" + jqXHR.responseText);
+            });
+        });
+    })(jQuery);
+</script>
