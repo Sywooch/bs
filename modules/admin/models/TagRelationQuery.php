@@ -11,11 +11,6 @@ use yii\db\ActiveQuery;
  */
 class TagRelationQuery extends ActiveQuery
 {
-    /*public function active()
-    {
-        return $this->andWhere('[[status]]=1');
-    }*/
-
     /**
      * {@inheritdoc}
      * @return TagRelation[]|array
@@ -32,5 +27,20 @@ class TagRelationQuery extends ActiveQuery
     public function one($db = null)
     {
         return parent::one($db);
+    }
+
+    /**
+     * @param array $category_id
+     * @param bool $is_array
+     * @return TagRelation[]|array
+     */
+    public function getTagsByCategory($category_id, $is_array = false)
+    {
+        return $this->select(['tag_id', 'product_id'])
+            ->joinWith(['tag','product'])
+            ->where([Product::tableName() . '.category_id' => $category_id])
+            ->groupBy(['tag_id'])
+            ->asArray($is_array)
+            ->all();
     }
 }

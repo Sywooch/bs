@@ -70,14 +70,15 @@ class CabinetController extends Controller
         ]);
     }
 
+    /**
+     * @param $order_id
+     * @return string
+     */
     public function actionOrderDetail($order_id)
     {
-//        $list_orders = Order::find()->where(['user_id' => Yii::$app->user->id]);
         $searchModel = new OrderItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//        $dataProvider->query->where(['user_id' => Yii::$app->user->id]);
         $dataProvider->query->where(['order_id' => $order_id]);
-
 
         return $this->render('index', [
             'title' => Yii::t('app', Yii::t('app', 'Order Detail')),

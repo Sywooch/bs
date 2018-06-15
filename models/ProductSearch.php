@@ -17,6 +17,9 @@ class ProductSearch extends Product
     public $tag_id;
     public $value;
 
+    public $tags;
+    public $features;
+
     /**
      * {@inheritdoc}
      */
@@ -24,7 +27,8 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'parent_id', 'category_id', 'tag_id', 'price', 'discount', 'status'], 'integer'],
-            [['title', 'value'], 'safe'],
+            [['tags'], 'each', 'rule' => ['integer']],
+            [['title', 'value', 'features'], 'safe'],
         ];
     }
 
@@ -88,6 +92,7 @@ class ProductSearch extends Product
             'status' => $this->status,
             Category::tableName() . '.parent_id' => $this->parent_id,
             TagRelation::tableName() . '.tag_id' => $this->tag_id,
+            TagRelation::tableName() . '.tag_id' => $this->tags,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
