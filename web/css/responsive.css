@@ -1,30 +1,33 @@
-/*----- RESPONSIVE -----*/
-@media (max-width: 1440px){
+/*--RESPONSIVE--*/
+@media (max-width: 1440px) {
+    .model {
+        width: 45%;
+    }
+    .model-info {
+        width: 55%;
+    }
     .contact form input[type="submit"] {
-        width: 89%;
         margin: 0 0 0 18px;
-        padding: 11px 0px;
+        padding: 11px 0;
+        width: 89%;
     }
     a.add-cart {
         left: 24%;
     }
-
-    /*
-        .model {
-            width: 45%;
-        }
-        .model-info {
-            width: 55%;
-        }
-    */
 }
-@media (max-width: 1366px){
+@media (max-width: 1366px) {
     .top-nav {
         margin-top: 0;
     }
 }
-@media (max-width: 1280px){
-    .banner-bg1{
+@media (max-width: 1280px) {
+    .model {
+        width: 37%;
+    }
+    .model-info {
+        width: 59%;
+    }
+    .banner-bg1 {
         min-height: 660px;
     }
     .caption h1 {
@@ -34,25 +37,17 @@
         font-size: 1.8em;
     }
     .callbacks_nav {
-        left: 20px;
-        height: 48px;
-        width: 49px;
         background-size: 104px;
-    }
-    /*
-    .model {
-        width: 37%;
-    }
-    .model-info {
-        width: 59%;
+        height: 48px;
+        left: 20px;
+        width: 49px;
     }
     .bikes h2 {
         font-size: 2.2em;
     }
-    */
 }
-@media (max-width: 1024px){
-    .banner-bg1{
+@media (max-width: 1024px) {
+    .banner-bg1 {
         min-height: 570px;
     }
     .banner-sec {
@@ -72,33 +67,17 @@
         bottom: 6%;
         left: 48%;
     }
-    .error-head h1 {
-        font-size: 13em;
-    }
-    .error-head span {
-        font-size: 3em;
-    }
-    a.morebtn {
-        padding: 0.85em 2.3em;
-        font-size: 0.8em;
-    }
-    select {
-        padding: 6px 1em 6px 0.5em;
-        margin-right: 5px;
-        font-size: 0.95em;
-    }
-    .contact form input[type="submit"] {
-        margin: 0 0 0 14px;
-    }
-
-    /*
     .cate-grid p {
         font-size: 1.15em;
     }
+    a.morebtn {
+        font-size: 0.8em;
+        padding: 0.85em 2.3em;
+    }
     .cate-grid {
-        padding: 7em 0 0 0;
+        margin: 0 15px;
         min-height: 273px;
-        margin: 0px 15px;
+        padding: 7em 0 0 0;
         width: 30%;
     }
     .categories {
@@ -113,12 +92,20 @@
     .model {
         width: 30%;
     }
+    select {
+        font-size: 0.95em;
+        margin-right: 5px;
+        padding: 6px 1em 6px 0.5em;
+    }
     .model-info a {
         font-size: 0.9em;
         padding: 0.7em 2em;
     }
     .model-info {
         width: 70%;
+    }
+    .contact form input[type="submit"] {
+        margin: 0 0 0 14px;
     }
     .bikes {
         padding: 3em 0 2em 0;
@@ -131,7 +118,7 @@
     }
     .bike-cart a.buy {
         font-size: 0.85em;
-        padding: 0.5em 2em
+        padding: 0.5em 2em;
     }
     .bikes h2 {
         font-size: 1.8em;
@@ -142,6 +129,12 @@
     }
     .parts h2 {
         font-size: 1.8em;
+    }
+    .error-head h1 {
+        font-size: 13em;
+    }
+    .error-head span {
+        font-size: 3em;
     }
     .cart-item-info h4 {
         font-size: 1.5em;
@@ -162,57 +155,99 @@
         font-size: 1.3em;
     }
     .viw {
-        padding: 1.3em 2.5em;
         font-size: 0.9em;
         left: 30%;
+        padding: 1.3em 2.5em;
     }
     .fast-viw {
-        padding: 0.7em 2.2em;
         font-size: 0.9em;
+        left: 7%;
+        padding: 0.7em 2.2em;
         top: 23%;
-        left:7%;
     }
     .bike {
         padding: 0.5em 0;
     }
-    */
 }
-@media (max-width:768px){
+@media (max-width:768px) {
+    .viw {
+        font-size: 0.85em;
+        left: 25%;
+        padding: 1.3em 2.3em;
+        top: 27%;
+    }
+    .bike-info {
+        margin-top: 1em;
+    }
     .top-nav {
         margin-top: 1px;
-        width: 70%;
         position: absolute;
         right: 7px;
+        width: 70%;
     }
     .rslides li:first-child {
-        color:#000;
-        padding:0;
-        border-top-left-radius:0;
-        border-top-right-radius:0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        color: #000;
+        padding: 0;
     }
     .caption {
         z-index: 0;
     }
     a.shop {
+        background: #828282;
         display: inline-block;
         float: left;
-        margin: 0px 0 0 0px;
-        background: #828282;
-        width: 100%;
+        margin: 0;
         padding: 8px;
+        width: 100%;
     }
-    .banner-bg1{
+    .banner-bg1 {
         min-height: 490px;
     }
     .caption h1 {
         font-size: 2.5em;
     }
-    .rsidebar {
-        width: 25%;
+    .cate-grid {
+        float: left;
+        min-height: 223px;
+        padding: 6em 0 0 0;
+        width: 29%;
+    }
+    .categories {
+        min-height: 400px;
+        padding: 3em 0 0 0;
+    }
+    .categories h3, .bikes h3,.contact h3 {
+        font-size: 1.7em;
+    }
+    .categorie-grids {
+        margin-top: 2em;
+    }
+    .cate-grid p {
+        font-size: 0.85em;
+    }
+    .model {
+        width: 100%;
+    }
+    .model-info {
+        margin: 5px 0;
+        text-align: left;
+        width: 100%;
+    }
+    .model h4 {
+        font-size: 1em;
     }
     select {
-        padding: 1px 1em 3px 0.5em;
         font-size: 0.8em;
+        padding: 1px 1em 3px 0.5em;
+    }
+    .model-info a {
+        font-size: 0.8em;
+        padding: 0.4em 2em;
+    }
+    .bikes-grids {
+        margin-top: 5em;
     }
     .contact p {
         font-size: 1.1em;
@@ -224,66 +259,18 @@
     .contact form {
         width: 65%;
     }
-    .wrap{
-        width:724px;
-        padding:0 15px;
+    .wrap {
+        padding: 0 15px;
+        width: 724px;
     }
-    .ftr-menu ul li a {
-        font-size: 1em;
-    }
-
-    /*
-    .viw {
-        padding: 1.3em 2.3em;
-        font-size: 0.85em;
-        left: 25%;
-        top: 27%;
-    }
-    .bike-info {
-        margin-top: 1em;
-    }
-    .cate-grid {
-        padding: 6em 0 0 0;
-        min-height: 223px;
-        float: left;
-        width: 29%;
-    }
-    .categories {
-        padding:3em 0 0 0;
-        min-height: 400px;
-    }
-    .categories h3, .bikes h3,.contact h3 {
-        font-size: 1.7em;
-    }
-    .category-grids {
-        margin-top: 2em;
-    }
-    .cate-grid p {
-        font-size:0.85em;
-    }
-    .model {
-        width: 100%;
-    }
-    .model-info {
-        width: 100%;
-        text-align: left;
-        margin:5px 0;
-    }
-    .model h4 {
-        font-size: 1em;
-    }
-    .model-info a {
-        font-size: 0.8em;
-        padding: 0.4em 2em;
-    }
-    .bikes-grids {
-        margin-top: 5em;
-    }
-    .none1{
-        display:none;
+    .none1 {
+        display: none;
     }
     .bike {
         width: 31%;
+    }
+    .rsidebar {
+        width: 25%;
     }
     .bike-parts {
         width: 71%;
@@ -295,18 +282,21 @@
         height: 150px;
         padding: 13px;
     }
+    .ftr-menu ul li a {
+        font-size: 1em;
+    }
     .cart-items {
         width: 100%;
     }
     .cart-total {
+        border-left: none;
         width: 100%;
-        border-left:none;
     }
-    a.continue{
-        width:30%;
+    a.continue {
+        width: 30%;
     }
-    a.order{
-        width:40%;
+    a.order {
+        width: 40%;
     }
     a.add-cart {
         left: 18%;
@@ -318,69 +308,93 @@
     .product_price {
         width: 26%;
     }
-    .prod1-desc p{
-        overflow:hidden;
-        height:83px;
+    .prod1-desc p {
+        height: 83px;
+        overflow: hidden;
     }
     .prod1-desc {
         width: 72%;
     }
     .grid.images_3_of_2 {
-        width: 37%;
         float: left;
+        width: 37%;
     }
     p.desc {
-        overflow: hidden;
         height: 131px;
+        overflow: hidden;
     }
-    */
 }
-@media (max-width:640px){
-    .logo a img{
-        background-size:100%;
-        width:100%;
+@media (max-width:640px) {
+    .logo a img {
+        background-size: 100%;
+        width: 100%;
     }
-    .logo{
-        width:20%;
+    .logo {
+        width: 20%;
     }
     .top-nav {
-        width: 57%;
         top: 32px;
+        width: 57%;
     }
     .caption h1 {
         font-size: 2.2em;
-        margin-bottom:2px;
+        margin-bottom: 2px;
     }
     .caption p {
         font-size: 1.2em;
     }
     a.morebtn {
-        padding: 0.8em 2em;
         font-size: 0.73em;
+        padding: 0.8em 2em;
     }
     .banner-bg1 {
         min-height: 435px;
     }
     .callbacks_nav {
-        left: 8px;
-        height: 36px;
-        width: 38px;
         background-size: 76px;
+        height: 36px;
+        left: 8px;
         margin-top: -36px;
+        width: 38px;
     }
-    .callbacks_nav.next{
-        right:8px;
+    .callbacks_nav.next {
+        right: 8px;
     }
     a.shop img {
         background-size: 100%;
         width: 6%;
     }
+    .cate-grid {
+        min-height: 166px;
+        padding: 4em 0 0 0;
+        width: 28%;
+    }
+    .cate-grid h4 {
+        font-size: 0.9em;
+    }
+    .cate-grid p {
+        font-size: 0.7em;
+    }
+    a.store {
+        border: 2px solid #fff;
+        font-size: 0.7em;
+        padding: 0.5em 1.2em;
+    }
+    .categories {
+        min-height: 317px;
+    }
+    .categories h3, .bikes h3, .contact h3 {
+        font-size: 1.4em;
+    }
+    .bikes-grids {
+        margin-top: 4em;
+    }
     .contact p {
         font-size: 0.95em;
     }
     .contact form input[type="text"], .contact textarea {
-        padding: 7px;
         font-size: 0.85em;
+        padding: 7px;
     }
     .contact form {
         width: 70%;
@@ -389,9 +403,9 @@
         height: 127px;
     }
     .contact form input[type="submit"] {
-        margin: 0 0 0 14px;
         font-size: 0.9em;
-        padding: 9px 0px;
+        margin: 0 0 0 14px;
+        padding: 9px 0;
     }
     .contact {
         min-height: 470px;
@@ -405,44 +419,17 @@
     .banner-sec {
         min-height: 130px;
     }
-
-    /*
-    .cate-grid {
-        padding: 4em 0 0 0;
-        min-height: 166px;
-        width: 28%;
-    }
-    .cate-grid h4 {
-        font-size: 0.9em;
-    }
-    .cate-grid p {
-        font-size: 0.7em;
-    }
-    a.store {
-        font-size: 0.7em;
-        border: 2px solid #fff;
-        padding: 0.5em 1.2em;
-    }
-    .categories {
-        min-height: 317px;
-    }
-    .categories h3, .bikes h3, .contact h3 {
-        font-size: 1.4em;
-    }
-    .bikes-grids {
-        margin-top: 4em;
-    }
     .bike-mdl {
-        width: 100%;
-        margin-bottom:5px;
+        margin-bottom: 5px;
         text-align: center;
+        width: 100%;
     }
-    .bike-mdl h4{
-        font-size:1em;
+    .bike-mdl h4 {
+        font-size: 1em;
     }
     .bike-cart {
-        width: 100%;
         text-align: center;
+        width: 100%;
     }
     .bike-cart a.buy {
         font-size: 0.8em;
@@ -466,11 +453,11 @@
         font-size: 0.9em;
     }
     a.add-cart {
-        left: 17%;
         font-size: 0.8em;
+        left: 17%;
     }
-    a.qck{
-        font-size:0.9em;
+    a.qck {
+        font-size: 0.9em;
     }
     .parts h2 {
         font-size: 1.5em;
@@ -482,19 +469,19 @@
         width: 51%;
     }
     p.desc {
-        overflow: hidden;
         height: 110px;
-    }
-    .prod1-desc p{
-        font-size:0.9em;
         overflow: hidden;
-        height: 52px
     }
-    .product-desc{
-        width:70%;
+    .prod1-desc p {
+        font-size: 0.9em;
+        height: 52px;
+        overflow: hidden;
     }
-    .product_price{
-        width:30%;
+    .product-desc {
+        width: 70%;
+    }
+    .product_price {
+        width: 30%;
     }
     .prod1-desc {
         margin-top: 0.5em;
@@ -508,17 +495,16 @@
         padding: 8px 29px;
     }
     .fast-viw {
-        padding: 0.6em 2em;
         font-size: 0.8em;
-        top: 18%;
         left: 5%;
+        padding: 0.6em 2em;
+        top: 18%;
     }
-    */
 }
 @media(max-width: 480px) {
     .top-nav {
-        top: 34px;
         right: 12px;
+        top: 34px;
     }
     .logo {
         width: 26%;
@@ -531,9 +517,9 @@
         font-size: 1.1em;
     }
     .callbacks_nav {
+        background-size: 62px;
         height: 39px;
         width: 31px;
-        background-size: 62px;
     }
     .banner-bg1 {
         min-height: 355px;
@@ -545,16 +531,46 @@
     .dwn img {
         width: 47%;
     }
+    .cate-grid {
+        min-height: 125px;
+        padding: 3.5em 0 0 0;
+        width: 26%;
+    }
+    .cate-grid h4 {
+        font-size: 0.7em;
+        height: 12px;
+        overflow: hidden;
+    }
+    .cate-grid p {
+        display: none;
+    }
+    a.store {
+        font-size: 0.65em;
+        margin-top: 0.3em;
+    }
+    .categories {
+        min-height: 235px;
+        padding: 3em 0 0 0;
+    }
+    .categories h3, .bikes h3, .contact h3 {
+        font-size: 1.3em;
+    }
+    .model,.model-info {
+        text-align: center;
+    }
     select {
-        padding: 7px 2em 8px 1.5em;
         font-size: 0.9em;
+        padding: 7px 2em 8px 1.5em;
+    }
+    .model-info a {
+        padding: 0.7em 3em;
     }
     .contact p {
         font-size: 0.83em;
     }
     .contact form {
-        width: 100%;
         margin: 2em auto 0 auto;
+        width: 100%;
     }
     .contact {
         min-height: 455px;
@@ -565,14 +581,69 @@
     .footer {
         text-align: center;
     }
-    .logo2{
-        margin-bottom:0.5em;
+    .logo2 {
+        margin-bottom: 0.5em;
     }
-    .logo2,.ftr-menu{
-        float:none;
+    .logo2,.ftr-menu {
+        float: none;
+    }
+    .bike-cart a.buy {
+        padding: 0.5em 2em;
+    }
+    .mountain-sec, .singlespeed-sec {
+        padding: 0 0 2em 0;
+    }
+    .bike-mdl h4 span {
+        display: none;
+    }
+    .bike-mdl {
+        margin-bottom: 2px;
+    }
+    .bike-mdl h4 {
+        font-size: 0.9em;
+    }
+    .bikes h2 {
+        font-size: 1.3em;
     }
     .rsidebar {
         width: 100%;
+    }
+    .bike-parts {
+        width: 100%;
+    }
+    .part-sec:nth-child(18) {
+        border-bottom: 0;
+    }
+    .details-left-info {
+        margin-left: 2%;
+        width: 100%;
+    }
+    .details-left-info h3 {
+        font-size: 1.1em;
+    }
+    .prod1-desc {
+        width: 72%;
+    }
+    .product_price {
+        margin-top: 0;
+        padding: 0 0 0 8px;
+        width: 22%;
+    }
+    .button1 {
+        display: block;
+    }
+    .product-desc h5 a {
+        font-size: 15px;
+        margin-bottom: 0.5em;
+    }
+    .product_price {
+        width: 25%;
+    }
+    .bottom-line {
+        border-bottom: 0;
+    }
+    .parts h2 {
+        font-size: 1.3em;
     }
     .error-head h1 {
         font-size: 10em;
@@ -582,93 +653,6 @@
     }
     .error-head h2 {
         font-size: 1.5em;
-    }
-
-    /*
-    .cate-grid {
-        padding: 3.5em 0 0 0;
-        min-height: 125px;
-        width: 26%;
-    }
-    .cate-grid h4 {
-        font-size: 0.7em;
-        overflow: hidden;
-        height: 12px;
-    }
-    .cate-grid p {
-        display: none;
-    }
-    a.store {
-        font-size: 0.65em;
-        margin-top:0.3em;
-    }
-    .categories {
-        min-height: 235px;
-        padding:3em 0 0 0;
-    }
-    .categories h3, .bikes h3, .contact h3 {
-        font-size: 1.3em;
-    }
-    .model,.model-info{
-        text-align:center;
-    }
-    .model-info a {
-        padding: 0.7em 3em;
-    }
-    .bike-cart a.buy {
-        padding: 0.5em 2em;
-    }
-    .mountain-sec, .singlespeed-sec {
-        padding: 0 0em 2em 0em;
-    }
-    .bike-mdl h4 span{
-        display:none;
-    }
-    .bike-mdl{
-        margin-bottom:2px;
-    }
-    .bike-mdl h4 {
-        font-size: 0.9em;
-    }
-    .bikes h2 {
-        font-size: 1.3em;
-    }
-    .bike-parts {
-        width: 100%;
-    }
-    .part-sec:nth-child(18){
-        border-bottom:0;
-    }
-    .details-left-info {
-        width: 100%;
-        margin-left: 2%;
-    }
-    .details-left-info h3 {
-        font-size: 1.1em;
-    }
-    .prod1-desc {
-        width: 72%;
-    }
-    .product_price {
-        width: 22%;
-        margin-top: 0em;
-        padding: 0 0px 0px 8px;
-    }
-    .button1 {
-        display:block;
-    }
-    .product-desc h5 a {
-        font-size: 15px;
-        margin-bottom: 0.5em;
-    }
-    .product_price {
-        width: 25%
-    }
-    .bottom-line{
-        border-bottom:0;
-    }
-    .parts h2 {
-        font-size: 1.3em;
     }
     .cart h2 {
         font-size: 1em;
@@ -680,7 +664,7 @@
         width: 66%;
     }
     .delivery {
-        margin-left: 0em;
+        margin-left: 0;
     }
     .cart-item-info h4 {
         font-size: 1.2em;
@@ -690,7 +674,7 @@
     }
     .delivery p, .delivery span {
         font-size: 0.8em;
-        margin-top:5px;
+        margin-top: 5px;
     }
     .form-control {
         width: 22%;
@@ -699,9 +683,9 @@
         padding: 22px 9px;
     }
     a.continue {
-        width: 43%;
-        padding: 8px 1.5em;
         font-size: 0.9em;
+        padding: 8px 1.5em;
+        width: 43%;
     }
     .cart-total {
         padding-top: 9px;
@@ -709,34 +693,36 @@
     h4.last-price,span.final {
         font-size: 1em;
     }
-    a.order,.price-details span{
-        font-size:0.9em;
+    a.order,.price-details span {
+        font-size: 0.9em;
     }
     .viw {
-        padding: 1.5em 2.3em;
         left: 36%;
+        padding: 1.5em 2.3em;
         top: 29%;
     }
     .contact form input[type="text"].user,.contact form input[type="submit"] {
-        width: 100%;
         margin-bottom: 1.2em;
+        width: 100%;
     }
-    .contact form input[type="text"], .contact textarea{
-        width: 100%;
-        margin-right:0;
+    .contact form input[type="text"], .contact textarea {
         margin-bottom: 1.2em;
+        margin-right: 0;
+        width: 100%;
     }
     .contact form input[type="submit"] {
-        margin:0;
+        margin: 0;
     }
     .fast-viw {
         font-size: 0.6em;
-        top: 16%;
         left: 3%;
+        top: 16%;
     }
-    */
 }
-@media(max-width: 320px){
+@media(max-width: 320px) {
+    .none3 {
+        display: none;
+    }
     .logo {
         width: 36%;
     }
@@ -745,28 +731,28 @@
     }
     .top-nav {
         top: 32px;
-        width:48%;
+        width: 48%;
     }
-    label.mobile_menu:after{
-        top:1px;
+    label.mobile_menu:after {
+        top: 1px;
     }
-    .caption h1{
-        font-size:1.3em;
+    .caption h1 {
+        font-size: 1.3em;
     }
-    .caption p{
-        font-size:0.8em;
+    .caption p {
+        font-size: 0.8em;
     }
     .callbacks_nav {
+        background-size: 51px;
         height: 28px;
         width: 25px;
-        background-size: 51px;
     }
     .banner-bg1 {
         min-height: 275px;
     }
     a.morebtn {
-        padding: 0.9em 2em;
         font-size: 0.6em;
+        padding: 0.9em 2em;
     }
     .dwn {
         bottom: 8%;
@@ -778,8 +764,21 @@
     .categories h3, .bikes h3, .contact h3 {
         font-size: 1.1em;
     }
-    .contact h3{
-        margin-bottom:0.3em;
+    .grid3 {
+        display: none;
+    }
+    .cate-grid {
+        margin: 0 7px;
+        width: 44%;
+    }
+    .categories {
+        padding: 2em 0 0 0;
+    }
+    .bikes-grids {
+        margin-top: 2.5em;
+    }
+    .contact h3 {
+        margin-bottom: 0.3em;
     }
     .contact p {
         font-size: 0.75em;
@@ -797,75 +796,54 @@
         font-size: 0.7em;
         padding: 0 0.5em;
     }
-    .logo2 img{
-        background-size:100%;
-        width:40%;
-        margin:0 auto;
+    .logo2 img {
+        background-size: 100%;
+        margin: 0 auto;
+        width: 40%;
     }
-    a.shop img{
-        width:12%;
+    a.shop img {
+        width: 12%;
     }
-    .banner-sec {
-        min-height: 104px;
-    }
-
-/*
-    .none3{
-        display:none;
-    }
-    .grid3{
-        display:none;
-    }
-    .cate-grid {
-        width: 44%;
-        margin: 0px 7px;
-    }
-    .categories{
-        padding:2em 0 0 0;
-    }
-    .bikes-grids {
-        margin-top: 2.5em;
-    }
-    .none2{
-        display:none;
+    .none2 {
+        display: none;
     }
     .bike {
-        width: 44%;
         margin: 0 3%;
+        width: 44%;
     }
     .bike-cost {
-        padding: 10px 0em;
+        padding: 10px 0;
     }
     .product-img {
-        margin-right: 0%;
+        margin-right: 0;
         width: 100%;
     }
-    .product-desc,.prod1-desc{
+    .product-desc,.prod1-desc {
         width: 100%;
     }
-    .prod1-desc{
-        margin-bottom:0.5em;
-        border-right:0;
+    .prod1-desc {
+        border-right: 0;
+        margin-bottom: 0.5em;
     }
     .product_price {
-        width: 100%;
-        padding:0;
+        padding: 0;
         text-align: center;
+        width: 100%;
     }
-    a.button1{
-        margin:0 auto;
-        width:50%;
+    a.button1 {
+        margin: 0 auto;
+        width: 50%;
     }
-    .product{
-        margin-bottom:1em;
+    .product {
+        margin-bottom: 1em;
     }
     p.desc {
-        overflow: hidden;
+        font-size: 0.8em;
         height: 80px;
         line-height: 1.5em;
-        font-size: 0.8em;
+        overflow: hidden;
     }
-    .details-left-info a,.bike-type p{
+    .details-left-info a,.bike-type p {
         font-size: 11px;
     }
     .part-sec {
@@ -879,48 +857,50 @@
         font-size: 0.8em;
     }
     .part-sec a h5 {
-        font-size:0.85em;
+        font-size: 0.85em;
     }
     a.add-cart {
-        left: 20%;
         font-size: 0.8em;
+        left: 20%;
         top: 25%;
     }
-    .cart-item,.cart-item-info{
-        width:100%;
+    .cart-item,.cart-item-info {
+        width: 100%;
     }
     .cart-item-info h4 {
         margin-right: 2em;
     }
-    .delivery p{
-        font-size: 0.7em;
+    .delivery p {
         float: none;
+        font-size: 0.7em;
         text-align: center;
     }
     .delivery span {
-        margin-left: 3.2em;
         float: none;
+        margin-left: 3.2em;
     }
-    .cart-total{
-        padding:0;
+    .cart-total {
+        padding: 0;
     }
     a.continue {
-        width: 75%;
-        padding: 8px 1.5em;
         font-size: 0.85em;
-        margin: 0px auto 2em auto;
+        margin: 0 auto 2em auto;
+        padding: 8px 1.5em;
+        width: 75%;
     }
     .cart-item-info h3 {
         margin-top: 1em;
     }
-    a.order{
+    a.order {
         font-size: 0.85em;
         margin: 2em auto 0 auto;
-        width: 68%;
         padding: 7px 1.5em;
+        width: 68%;
     }
-    .none2{
-        display:none;
+    .banner-sec {
+        min-height: 104px;
     }
-    */
+    .none2 {
+        display: none;
+    }
 }

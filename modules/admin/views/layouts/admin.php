@@ -92,34 +92,6 @@ if (Yii::$app->controller->id === 'admin' && Yii::$app->controller->action->id =
             <div class="thin"><small>Интернет-магазин<br>велосипедов</small></div>
         </div>
 
-        <div class="ftr-menu">
-            <dl>
-                <dt>Контактная информация</dt>
-                <dd>(050) 505-05-05</dd>
-                <dd>(063) 636-36-36</dd>
-                <dd>(068) 686-86-86</dd>
-                <dd class="mt-2">e-mail: <a href="mailto: <?= Yii::$app->params['infoEmail'] ?>"><?= Yii::$app->params['infoEmail'] ?></dd>
-                <dd></dd>
-            </dl>
-        </div>
-
-        <div class="ftr-menu">
-            <dl>
-                <dt>Клиентам</dt>
-                <dd><a href="bicycles.html">Вход в личный кабинет</a></dd>
-                <dd><a href="parts.html">Оплата и доставка</a></dd>
-                <dd><a href="accessories.html">Гарантия</a></dd>
-            </dl>
-        </div>
-
-        <div class="ftr-menu">
-            <dl>
-                <dt>Каталог</dt>
-                <dd><a href="bicycles.html">Велосипеды</a></dd>
-                <dd><a href="parts.html">Запчасти</a></dd>
-                <dd><a href="accessories.html">Аксессуары</a></dd>
-            </dl>
-        </div>
 
         <div class="clearfix"></div>
     </div>

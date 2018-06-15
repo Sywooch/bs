@@ -42,8 +42,6 @@ $features = $model->getValues()->with(['feature'])->all();
             <div class="btn_form" data-id="<?= $model->id ?>">
                 <button class="btn btn-site buy"><?= Yii::t('app', 'Buy') ?></button>
                 <button class="btn btn-site add-cart"><?= Yii::t('app', 'Add To Cart') ?></button>
-
-<!--                <a href="--><?//= Url::toRoute(['/cart/add', 'id' => $model->id]) ?><!--" class="btn btn-site mt-3">--><?//= Yii::t('app', 'Add To Cart') ?><!--</a>-->
             </div>
 
             <div class="bike-type">
