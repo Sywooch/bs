@@ -117,9 +117,9 @@ class SiteController extends Controller
     public function actionFeedback()
     {
         $model = new FeedbackForm();
-        if ($model->load(Yii::$app->request->post()) && $model->feedback(Yii::$app->params['adminEmail'])) {
+
+        if ($model->load(Yii::$app->request->post()) && $model->feedback(Yii::$app->params['infoEmail'])) {
             Yii::$app->session->addFlash('contactFormSubmitted');
-//            Yii::$app->session->addFlash('success', 'contactFormSubmitted');
 
             return $this->refresh();
         }

@@ -24,13 +24,9 @@ class FeedbackForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-//            [['name', 'surname', 'email', 'subject', 'body'], 'required', 'message' => 'Поле не может быть пустым'],
             [['name', 'surname', 'email', 'subject', 'body'], 'required', 'message' => ''],
-            // email has to be a valid email address
-            ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            ['email', 'email', 'message' => ''],
+            ['verifyCode', 'captcha', 'message' => ''],
         ];
     }
 
@@ -40,7 +36,12 @@ class FeedbackForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => Yii::t('app', 'Name'),
+            'surname' => Yii::t('app', 'Surname'),
+            'email' => Yii::t('app', 'Email'),
+            'subject' => Yii::t('app', 'Subject'),
+            'body' => Yii::t('app', 'Message'),
+            'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
 
